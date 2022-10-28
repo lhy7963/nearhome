@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Accordion Menu</title>
+  <style type="text/css">
+
+  	html{background: #242424; color: white; margin-top: 12vh;margin-left: 5vw; margin-right: 5vw;}
+  	button {background: #19A7AC; color: white;font-weight: bold; font-size: 2m; width: 20vw; height: 5vh; margin-top: 10vh; border-radius: 10px; border-color: #121212; border-style: none; box-shadow: #121212 5px 5px 10px; box-shadow: transparent; }
+  	div{line-height: 140%; }
+  	h1{}
+
+  	.centering{text-align: center;}
+  	.maincolor{color: #6C8B8D;}
+  	.boxcolor {background:#121212; }
+  	.button{width: 20vw; height: 10vh;}
+  	.space{margin-bottom: 5vh;}
+
+  	*{
+  box-sizing: border-box; 
+}
+  
+.que:first-child{
+    border-top: 1px solid black;
+  }
+  
+.que{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid black;
+  background: #242424;
+  
+}
+  
+.que::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #19A7AC;
+  margin: 0 5px;
+}
+
+.que.on>span{
+  font-weight: bold;
+  color:#19A7AC ; 
+
+}
+  
+.anw {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #121212;
+  padding: 27px 0;\
+
+}
+  
+.anw::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin: 0 5px;
+}
+
+.arrow-wrap {
+  position: absolute;
+  top:50%; right: 10px;
+  transform: translate(0, -50%);
+}
+
+.que .arrow-top {
+  display: none;
+}
+.que .arrow-bottom {
+  display: block;
+}
+.que.on .arrow-bottom {
+  display: none;
+}
+.que.on .arrow-top {
+  display: block; 
+}
+  </style>
+</head>
+<body>
+
+<h1 class="centering">
+	<div class="maincolor">Near.</div>
+	<div>다빈치관 살인사건</div>
+</h1>
+
+
+
+<div class="centering">2022년 11월 7일 다빈치관에서 살인사건이 발생했습니다.</div>
+<div class="centering space">사건의 범인 한 명과, 범인을 도와준 조력자 한 명을 찾아 사건을 해결해주세요!</div>
+
+<div id="Accordion_wrap">
+     <div class="que centering boxcolor">
+      <span>사건개요</span>
+       <div class="arrow-wrap">
+         <span class="arrow-top">▲</span>
+        <span class="arrow-bottom">▼</span>
+       </div>
+      
+     </div>
+     <div class="anw centering">
+      <span>사건개요</span>
+     </div>
+      <div class="que centering">
+      <span>용의자</span>
+      <div class="arrow-wrap">
+         <span class="arrow-top">▲</span>
+        <span class="arrow-bottom">▼</span>
+       </div>
+     </div>
+     <div class="anw centering">
+      <span>용의자</span>
+     </div>
+      <div class="que centering">
+      <span>빈칸</span>
+     </div>
+     <div class="anw centering">
+      <span>빈칸</span>
+     </div>
+</div>
+
+
+<div class="centering">
+	<button>추리하기</button>
+</div>
+<script type="text/javascript">
+	$(".que").click(function() {
+   $(this).next(".anw").stop().slideToggle(300);
+  $(this).toggleClass('on').siblings().removeClass('on');
+  $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+});
+</script>
+
+</body>
+</html>
